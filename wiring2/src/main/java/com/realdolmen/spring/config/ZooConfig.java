@@ -7,15 +7,21 @@ import com.realdolmen.spring.service.PairiDaiza;
 import com.realdolmen.spring.service.Zoo;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
+import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
+import org.springframework.test.context.TestPropertySource;
 
 
 /**
  * Created by cda5732 on 25/03/2015.
  */
 @Configuration
+
 // TODO Load properties for the zoo
+@PropertySource("classpath:Zoo.properties")
 // TODO Add a profile
 public class ZooConfig {
+
 
     @Bean
     public Zoo zoo() {
@@ -37,4 +43,8 @@ public class ZooConfig {
     }
 
     // TODO Configure the properties loader
+    @Bean
+    public static PropertySourcesPlaceholderConfigurer placeholderConfigurer(){
+        return new PropertySourcesPlaceholderConfigurer();
+    }
 }

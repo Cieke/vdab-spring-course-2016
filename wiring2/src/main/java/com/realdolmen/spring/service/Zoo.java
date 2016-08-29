@@ -16,6 +16,8 @@ public interface Zoo {
     String getName();
 
     // TODO Add more methods (getters) here
+
+
     int countAnimals();
 
     void feedAnimals();

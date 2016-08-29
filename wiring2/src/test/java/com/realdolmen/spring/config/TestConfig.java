@@ -15,7 +15,10 @@ import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 // TODO load test properties
 // TODO configure a profile
 // TODO use component scanning
+
+@ComponentScan(basePackages = "com.realdolmen.spring")
 public class TestConfig {
+
     @Bean
     public Zoo zoo() {
         Zoo zoo = new PairiDaiza();
@@ -26,5 +29,7 @@ public class TestConfig {
     }
 
    // TODO configure the properties loader
+
+
 
 }
