@@ -2,9 +2,15 @@ package com.realdolmen.spring.aspects;
 
 import com.realdolmen.spring.domain.Animal;
 import com.realdolmen.spring.domain.Zoo;
+import org.aspectj.lang.annotation.Aspect;
+import org.aspectj.lang.annotation.Before;
+import org.springframework.stereotype.Component;
 
 import java.util.Objects;
 
+
+@Component
+@Aspect
 // TODO: Marketing must become a Spring AOP Aspect
 public class Marketing {
     private boolean campaignLaunched = false;
@@ -17,6 +23,13 @@ public class Marketing {
      * @param zoo The zoo to launch a campaign for.
      * @param animal The newly arrived animal.
      */
+    @Before("execution(* com.realdolmen.spring.domain.Zoo.addAnimal(com.realdolmen.spring.domain.Animal)) && args(a)")
+    public void animalAdded(Animal a){
+
+        System.out.println("animal added");
+        // joinpoint om zoo toe te voegen
+    }
+
     void launchCampaign(Zoo zoo, Animal animal) {
         Objects.requireNonNull(zoo, () -> "Don't know which zoo to launch an advertisement campaign for.");
         Objects.requireNonNull(animal, () -> "Don't know which animal to launch an advertisement campaign for.");

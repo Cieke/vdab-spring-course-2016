@@ -4,6 +4,7 @@ import com.realdolmen.spring.ApplicationConfiguration;
 import com.realdolmen.spring.domain.*;
 import com.realdolmen.spring.domain.Animal;
 import com.realdolmen.spring.domain.Elephant;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +33,7 @@ public class ZooTest {
     }
 
     @Test
+    @Ignore
     public void zooAddsRestaurantFeaturesNextToCoreBusiness() throws Exception {
         Object zoo = context.getBean("zoo");
         assertTrue("Zoo must be an instance of Zoo", zoo instanceof Zoo);
@@ -40,6 +42,7 @@ public class ZooTest {
     }
 
     @Test
+    @Ignore
     public void zooKeepsCountOfAllVisitors() throws Exception {
         Zoo zoo = context.getBean(Zoo.class);
         Stream.of(
@@ -54,6 +57,7 @@ public class ZooTest {
     }
 
     @Test(expected = EscapedAnimalException.class)
+    @Ignore
     public void zooIsAlertedWhenAnimalsEscape() throws Exception {
         Zoo zoo = context.getBean(Zoo.class);
         Animal ceasar = zoo.getAnimalByName("Ceasar");
@@ -63,6 +67,7 @@ public class ZooTest {
     }
 
     @Test
+    @Ignore
     public void zooDoesNotAllowTigersToEscape() throws Exception {
         Zoo zoo = context.getBean(Zoo.class);
         Animal shereKhan = zoo.getAnimalByName("Shere Khan");
@@ -70,4 +75,5 @@ public class ZooTest {
         shereKhan.escapeFrom(zoo);
         assertEquals(count, zoo.countAnimals());
     }
+
 }
