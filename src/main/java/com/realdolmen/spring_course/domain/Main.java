@@ -10,7 +10,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-       ApplicationContext ac = SpringApplication.run(MyConfiguration.class);
+       ApplicationContext ac = SpringApplication.run(Main.class);
 
         Knight k = ac.getBean(Knight.class);
         k.embarkOnQuest();
