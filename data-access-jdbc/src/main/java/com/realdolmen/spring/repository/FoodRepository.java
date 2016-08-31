@@ -4,8 +4,11 @@ import com.realdolmen.spring.domain.Animal;
 import com.realdolmen.spring.domain.Food;
 import com.realdolmen.spring.domain.MeatyFood;
 import com.realdolmen.spring.domain.VegiFood;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
 
 public interface FoodRepository {
     Food findFoodById(int id);
