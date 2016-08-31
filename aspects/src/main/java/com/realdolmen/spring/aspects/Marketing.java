@@ -2,6 +2,7 @@ package com.realdolmen.spring.aspects;
 
 import com.realdolmen.spring.domain.Animal;
 import com.realdolmen.spring.domain.Zoo;
+import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
@@ -24,10 +25,11 @@ public class Marketing {
      * @param animal The newly arrived animal.
      */
     @Before("execution(* com.realdolmen.spring.domain.Zoo.addAnimal(com.realdolmen.spring.domain.Animal)) && args(a)")
-    public void animalAdded(Animal a){
+    public void animalAdded(JoinPoint jP, Animal a){
+        Zoo zoo = (Zoo) jP.getTarget();
 
-        System.out.println("animal added");
-        // joinpoint om zoo toe te voegen
+        launchCampaign(zoo, a);
+        //campaignLaunched = true; 
     }
 
     void launchCampaign(Zoo zoo, Animal animal) {
