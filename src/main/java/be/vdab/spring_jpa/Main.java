@@ -23,14 +23,24 @@ public class Main {
 
     public static void main(String[] args) {
         ConfigurableApplicationContext context= SpringApplication.run(Main.class);
-        FilmRepository fr = context.getBean(FilmRepository.class);
-        List<Film> films = fr.findAll();
-        for(Film film : films){
-            System.out.println(film);
-            for (Actor actor: film.getActors()){
-                System.out.println("\t- " + actor);
-            }
+
+        ActorRepository ar = context.getBean(ActorRepository.class);
+        System.out.println(ar.count());
+        List<Actor> actors = ar.findByFirstName("John");
+        for (Actor actor : actors){
+            System.out.println(actor);
         }
+
+
+
+//        FilmRepository fr = context.getBean(FilmRepository.class);
+//        List<Film> films = fr.findAll();
+//        for(Film film : films){
+//            System.out.println(film);
+//            for (Actor actor: film.getActors()){
+//                System.out.println("\t- " + actor);
+//            }
+//        }
     }
 
     @Bean
@@ -57,7 +67,7 @@ public class Main {
 
     @Bean
     //local container entity manager factory ben
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(DataSource dataSource,
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource,
                                              JpaVendorAdapter jpaVendorAdapter){
         LocalContainerEntityManagerFactoryBean emfb = new LocalContainerEntityManagerFactoryBean();
         emfb.setDataSource(dataSource);
