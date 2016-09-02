@@ -1,9 +1,13 @@
 package com.realdolmen.spring.blog.config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Profile;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.transaction.annotation.Transactional;
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -12,6 +16,9 @@ import java.util.Properties;
  * Created by cda5732 on 14/04/2015.
  */
 @Configuration
+@EnableTransactionManagement
+@Profile("test")
+@ComponentScan ("com.realdolmen.spring.blog")
 // TODO Enable transactions
 // TODO This is the test configuration
 // TODO Add a component scan
